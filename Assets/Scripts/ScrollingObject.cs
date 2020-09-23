@@ -6,7 +6,8 @@ public class ScrollingObject : MonoBehaviour {
 
     private void Update() {
         // 게임 오브젝트를 왼쪽으로 일정 속도로 평행 이동하는 처리
-        //초당 speed의 속도로 왼쪽으로 평행 이동
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+        if(!GameManager.instance.isGameover)
+            transform.Translate(Vector3.left * speed * Time.deltaTime);        //초당 speed의 속도로 왼쪽으로 평행 이동
     }
 }
