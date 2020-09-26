@@ -1,5 +1,5 @@
 # Uni-Run
-Source by https://github.com/IJEMIN/Unity-Programming-Essence
+Source - https://github.com/IJEMIN/Unity-Programming-Essence
 
 ## Ver 1.0
 책 보면서 그대로 따라했습니다.
