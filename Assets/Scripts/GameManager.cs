@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     public static GameManager instance; // 싱글톤을 할당할 전역 변수
 
+    public AudioClip bgm;
+    private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
+
     public bool isGameover = false; // 게임 오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
@@ -32,6 +35,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        playerAudio = GetComponent<AudioSource>();
+
+        playerAudio.clip = bgm;
+        playerAudio.Play();
+    }
+
     void Update() {
         // 게임 오버 상태에서 게임을 재시작할 수 있게 하는 처리
         if (isGameover && Input.GetMouseButtonDown(0))  //게임오버 상태에서 마우스 좌클하면 현재 씬 재시작
@@ -52,5 +63,6 @@ public class GameManager : MonoBehaviour {
     public void OnPlayerDead() {
         isGameover = true;
         gameoverUI.SetActive(true);
+        playerAudio.Stop();
     }
 }
