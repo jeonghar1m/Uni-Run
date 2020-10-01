@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 마우스 왼쪽 버튼을 눌렀으며 && 최대 점프 횟수(2)에 도달하지 않았다면
-        if (Input.GetMouseButtonDown(0) && jumpCount < 2)
+        if (Input.GetMouseButtonDown(0) && jumpCount < 10)
         {
             // 점프 횟수 증가
             jumpCount++;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             // 마우스 왼쪽 버튼에서 손을 떼는 순간 && 속도의 y 값이 양수라면 (위로 상승 중)
             // 현재 속도를 절반으로 변경
-            playerRigidbody.velocity = playerRigidbody.velocity * 0.5f;
+            playerRigidbody.velocity *= 0.5f;
         }
 
         // 애니메이터의 Grounded 파라미터를 isGrounded 값으로 갱신
