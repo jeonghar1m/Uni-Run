@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 마우스 왼쪽 버튼을 눌렀으며 && 최대 점프 횟수(2)에 도달하지 않았다면
-        if (Input.GetMouseButtonDown(0) && jumpCount < 10)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 10)
         {
             // 점프 횟수 증가
             jumpCount++;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             // 오디오 소스 재생
             playerAudio.Play();
         }
-        else if (Input.GetMouseButtonUp(0) && playerRigidbody.velocity.y > 0)
+        else if (Input.GetKeyUp(KeyCode.Space) && playerRigidbody.velocity.y > 0)
         {
             // 마우스 왼쪽 버튼에서 손을 떼는 순간 && 속도의 y 값이 양수라면 (위로 상승 중)
             // 현재 속도를 절반으로 변경

@@ -15,7 +15,7 @@ public class Platform : MonoBehaviour {
         for(int i=0;i<obstacles.Length;i++)
         {
             //현재 순번의 장애물을 1/10 확률로 활성화
-            if (Random.Range(0, 10) == 0)
+            if (Random.Range(0, 3) == 0)
                 obstacles[i].SetActive(true);
             else
                 obstacles[i].SetActive(false);
