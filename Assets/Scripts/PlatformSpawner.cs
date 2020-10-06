@@ -26,7 +26,7 @@ public class PlatformSpawner : MonoBehaviour {
         platforms = new GameObject[count];
 
         //count 만큼 루프하면서 발판 생성
-        for(int i=0;i<count;++i)
+        for(int i=0;i<count;i++)
         {
             //platformPrefab을 원본으로 새 발판을 poolPosition 위치에 복제 생성
             //생성된 발판을 platforms 배열에 할당
