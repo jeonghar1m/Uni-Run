@@ -11,7 +11,7 @@ public class PlatformSpawner : MonoBehaviour {
 
     public float yMin = -3.5f; // 배치할 위치의 최소 y값
     public float yMax = 1.5f; // 배치할 위치의 최대 y값
-    private float xPos = 20f; // 배치할 위치의 x 값
+    private float xPos = -20f; // 배치할 위치의 x 값
 
     private GameObject[] platforms; // 미리 생성한 발판들
     private int currentIndex = 0; // 사용할 현재 순번의 발판
