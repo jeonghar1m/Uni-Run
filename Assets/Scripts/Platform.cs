@@ -14,8 +14,8 @@ public class Platform : MonoBehaviour {
         //장애물 수 만큼 루프
         for(int i=0;i<obstacles.Length;i++)
         {
-            //현재 순번의 장애물을 1/5 확률로 활성화
-            if (Random.Range(0, 5) == 0)
+            //현재 순번의 장애물을 1/3 확률로 활성화
+            if (Random.Range(0, 3) == 0)
                 obstacles[i].SetActive(true);
             else
                 obstacles[i].SetActive(false);
