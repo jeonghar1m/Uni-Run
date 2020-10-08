@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour {
 
     public bool isGameover = false; // 게임 오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
+    public Text timeText; //타이머를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
     private int score = 0; // 게임 점수
+    private float playTime = 0.0f; //타이머
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -51,12 +53,18 @@ public class GameManager : MonoBehaviour {
 
     // 점수를 증가시키는 메서드
     public void AddScore(int newScore) {
-        if(!isGameover)
+        if (!isGameover)
         {
             //점수 증가
             score += newScore;
             scoreText.text = "Score: " + score;
         }
+    }
+
+    public void Timer()
+    {
+        playTime += Time.time;
+        timeText.text = "Time: " + playTime;
     }
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
