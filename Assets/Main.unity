@@ -364,6 +364,7 @@ MonoBehaviour:
   bgm: {fileID: 8300000, guid: 4dd43bb437e454be4a5cffc8d1065c21, type: 3}
   isGameover: 0
   scoreText: {fileID: 1613146460}
+  timeText: {fileID: 1423021715}
   gameoverUI: {fileID: 1792293118}
 --- !u!4 &219704575
 Transform:
