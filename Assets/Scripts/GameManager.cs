@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
     private int score = 0; // 게임 점수
-    private float playTime = 0.0f; //타이머
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -51,10 +50,7 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         if (!isGameover)
-        {
-            playTime += Time.time;
-            timeText.text = "Time: " + playTime;
-        }
+            timeText.text = "Time: " + Time.time;
     }
 
     // 점수를 증가시키는 메서드
