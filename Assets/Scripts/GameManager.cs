@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         if (!isGameover)
-            timeText.text = "Time: " + Time.time;
+            timeText.text = "Time: " + (int)Time.time;
     }
 
     // 점수를 증가시키는 메서드
