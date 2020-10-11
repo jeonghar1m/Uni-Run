@@ -63,15 +63,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //public void Timer()
-    //{
-    //    while (!isGameover)
-    //    {
-    //        playTime += Time.deltaTime;
-    //        timeText.text = "Time: " + playTime;
-    //    }
-    //}
-
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
     public void OnPlayerDead() {
         isGameover = true;
