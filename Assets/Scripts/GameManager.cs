@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 // 게임 오버 상태를 표현하고, 게임 점수와 UI를 관리하는 게임 매니저
