@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 // 게임 오버 상태를 표현하고, 게임 점수와 UI를 관리하는 게임 매니저
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
     private int score = 0; // 게임 점수
+    private int playTime = 0; //게임 시작 시간
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -50,7 +52,10 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         if (!isGameover)
-            timeText.text = "Time: " + (int)Time.time;
+        {
+            playTime = (int)Time.time;
+            timeText.text = "Time: " + playTime;
+        }
     }
 
     // 점수를 증가시키는 메서드
