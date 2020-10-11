@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour {
         // 게임을 재시작할 수 있게 하는 처리
         if (Input.GetKeyDown(KeyCode.R))  //R 누르면 현재 씬 재시작
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (!isGameover)
+        {
+            playTime += Time.time;
+            timeText.text = "Time: " + playTime;
+        }
     }
 
     // 점수를 증가시키는 메서드
@@ -61,14 +67,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void Timer()
-    {
-        while (!isGameover)
-        {
-            playTime += Time.time;
-            timeText.text = "Time: " + playTime;
-        }
-    }
+    //public void Timer()
+    //{
+    //    while (!isGameover)
+    //    {
+    //        playTime += Time.deltaTime;
+    //        timeText.text = "Time: " + playTime;
+    //    }
+    //}
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
     public void OnPlayerDead() {
