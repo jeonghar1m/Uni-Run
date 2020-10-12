@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.OnPlayerDead();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) //플레이어와 가시 충돌
     {
         if (other.tag == "Dead" && !isDead)
         {
