@@ -1142,7 +1142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690774595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.105, y: 2.105, z: 0}
+  m_LocalPosition: {x: -13.59, y: 2.105, z: 0}
   m_LocalScale: {x: 0.178, y: 0.178, z: 0.178}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 1671242928466520, guid: f9fc9d007ca214ed9ad2949a47f59fb5,
     type: 3}
+  Block: {fileID: 1690774595}
 --- !u!4 &1939524902
 Transform:
   m_ObjectHideFlags: 0
