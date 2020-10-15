@@ -68,9 +68,12 @@ public class PlatformSpawner : MonoBehaviour {
             platforms[currentIndex].SetActive(true);
             blocks[currentIndex].SetActive(true);
 
-            //현재 순번의 발판을 화면 오른쪽에 재배치
+            //현재 순번의 발판을 화면 왼쪽에 재배치
             platforms[currentIndex].transform.position = new Vector2(xPos, platformsYPos);
             blocks[currentIndex].transform.position = new Vector2(xPos, blocksYPos);
+
+            if(blocksYPos <= platformsYPos)             //블록의 y축이 플랫폼의 y축보다 작거나 같으면
+                blocks[currentIndex].SetActive(false);  //해당 순서의 블록 제거
 
             //순번 넘기기
             currentIndex++;
