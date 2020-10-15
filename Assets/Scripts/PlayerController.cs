@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Dead" && !isDead) //플레이어와 가시 충돌
+        if (other.tag == "Dead" && !isDead) //플레이어와 가시 및 라바 블록 충돌
         {
             // 충돌한 상대방의 태그가 Dead이며 아직 사망하지 않았다면 Die() 실행
             Die();
