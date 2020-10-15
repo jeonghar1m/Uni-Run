@@ -18,8 +18,8 @@ public class PlatformSpawner : MonoBehaviour {
     private GameObject[] blocks;    //미리 생성한 블록들
     private int currentIndex = 0; // 사용할 현재 순번의 발판
 
-    private Vector2 poolPosition = new Vector2(0, -25); // 초반에 생성된 발판들을 화면 밖에 숨겨둘 위치
-    private Vector2 poolPosition2 = new Vector2(0, -30); // 초반에 생성된 발판들을 화면 밖에 숨겨둘 위치
+    private Vector2 platformsPoolPosition = new Vector2(0, -25); // 초반에 생성된 발판들을 화면 밖에 숨겨둘 위치
+    private Vector2 blocksPoolPosition = new Vector2(0, -30); // 초반에 생성된 발판들을 화면 밖에 숨겨둘 위치
     private float lastSpawnTime; // 마지막 배치 시점
 
 
@@ -34,8 +34,8 @@ public class PlatformSpawner : MonoBehaviour {
         {
             //platformPrefab을 원본으로 새 발판을 poolPosition 위치에 복제 생성
             //생성된 발판을 platforms, blocks 배열에 할당
-            platforms[i] = Instantiate(platformPrefab, poolPosition, Quaternion.identity);
-            blocks[i] = Instantiate(blockPrefab, poolPosition2, Quaternion.identity);
+            platforms[i] = Instantiate(platformPrefab, platformsPoolPosition, Quaternion.identity);
+            blocks[i] = Instantiate(blockPrefab, blocksPoolPosition, Quaternion.identity);
         }
         //마지막 배치 시점 초기화
         lastSpawnTime = 0f;
