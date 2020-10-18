@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 // 발판을 생성하고 주기적으로 재배치하는 스크립트
-public class PlatformSpawner : MonoBehaviour {
+public class PlatformSpawner : MonoBehaviour
+{
     public GameObject platformPrefab; // 생성할 발판의 원본 프리팹
     public GameObject blockPrefab; // 생성할 블록의 원본 프리팹
-    private int count = 3; // 생성할 발판의 개수
+    private int count = 10; // 생성할 발판의 개수
 
     private float timeBetSpawnMin = 1.25f; // 다음 배치까지의 시간 간격 최솟값
     private float timeBetSpawnMax = 2.25f; // 다음 배치까지의 시간 간격 최댓값
@@ -23,14 +24,15 @@ public class PlatformSpawner : MonoBehaviour {
     private float lastSpawnTime; // 마지막 배치 시점
 
 
-    void Start() {
+    void Start()
+    {
         // 변수들을 초기화하고 사용할 발판과 블록들을 미리 생성
         //Count만큼의 공간을 가지는 새로운 발판 배열 생성
         platforms = new GameObject[count];
         blocks = new GameObject[count];
 
         //count 만큼 루프하면서 발판 생성
-        for(int i=0;i<count;i++)
+        for (int i = 0; i < count; i++)
         {
             //platformPrefab을 원본으로 새 발판을 poolPosition 위치에 복제 생성
             //생성된 발판을 platforms, blocks 배열에 할당
@@ -43,13 +45,14 @@ public class PlatformSpawner : MonoBehaviour {
         timeBetSpawn = 0f;
     }
 
-    void Update() {
+    void Update()
+    {
         // 순서를 돌아가며 주기적으로 발판을 배치
         //게임오버 상태에서는 미동작
         if (GameManager.instance.isGameover)
             return;
         //마지막 배치 시점에서 timeBetSpawn 이상 시간이 흘렀다면
-        if(Time.time>=lastSpawnTime+timeBetSpawn)
+        if (Time.time >= lastSpawnTime + timeBetSpawn)
         {
             //기록된 마지막 배치 시점을 현재 시점으로 갱신
             lastSpawnTime = Time.time;
@@ -72,7 +75,7 @@ public class PlatformSpawner : MonoBehaviour {
             platforms[currentIndex].transform.position = new Vector2(xPos, platformsYPos);
             blocks[currentIndex].transform.position = new Vector2(xPos, blocksYPos);
 
-            if(blocksYPos <= platformsYPos)             //블록의 y축이 플랫폼의 y축보다 작거나 같으면
+            if (blocksYPos <= platformsYPos)             //블록의 y축이 플랫폼의 y축보다 작거나 같으면
                 blocks[currentIndex].SetActive(false);  //해당 순서의 블록 제거
 
             //순번 넘기기
