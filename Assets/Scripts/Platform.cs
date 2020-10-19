@@ -30,7 +30,7 @@ public class Platform : MonoBehaviour {
     //    if (enableTrapNumber == 0)
     //    {
     //        trapTarget = new Vector2(-2, 1.8f);
-    //        obstacles[enableTrapNumber].transform.position += Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+    //        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
     //    }
     //    else if (enableTrapNumber == 1)
     //    {
