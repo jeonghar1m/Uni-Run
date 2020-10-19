@@ -18,31 +18,19 @@ public class Platform : MonoBehaviour {
         {
             //현재 순번의 장애물을 1/3 확률로 활성화
             if (Random.Range(0, 3) == 0)
+            {
                 obstacles[i].SetActive(true);
+            }
             else
                 obstacles[i].SetActive(false);
         }
     }
-    //private void Update()
-    //{
-    //    int enableTrapNumber = -1;
-    //    OnEnable(ref enableTrapNumber);
-    //    if (enableTrapNumber == 0)
-    //    {
-    //        trapTarget = new Vector2(-2, 1.8f);
-    //        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
-    //    }
-    //    else if (enableTrapNumber == 1)
-    //    {
-    //        trapTarget = new Vector2(0, 1.8f);
-    //        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
-    //    }
-    //    else if (enableTrapNumber == 2)
-    //    {
-    //        trapTarget = new Vector2(2, 1.8f);
-    //        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
-    //    }
-    //}
+    private void Update()
+    {
+        int enableTrapNumber = -1;
+        trapTarget = new Vector2(transform.position.x, 1.8f);
+        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+    }
 
     void OnCollisionEnter2D(Collision2D collision) {
         // 플레이어 캐릭터가 자신을 밟았을때 점수를 추가하는 처리
