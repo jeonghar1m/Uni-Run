@@ -5,6 +5,7 @@ public class Platform : MonoBehaviour {
     public GameObject[] obstacles; // 장애물 오브젝트들
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
     private Vector2 trapTarget;  //가시 이동 목표 지점
+    private bool[] isTrap = new bool[3] { false, false, false };
 
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
     private void OnEnable()
@@ -20,6 +21,7 @@ public class Platform : MonoBehaviour {
             if (Random.Range(0, 3) == 0)
             {
                 obstacles[i].SetActive(true);
+                isTrap[i] = true;
             }
             else
                 obstacles[i].SetActive(false);
@@ -27,9 +29,14 @@ public class Platform : MonoBehaviour {
     }
     private void Update()
     {
-        int enableTrapNumber = -1;
+        //int enableTrapNumber = -1;
         trapTarget = new Vector2(transform.position.x, 1.8f);
-        obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+        //obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+        for(int i=0;i<obstacles.Length;i++)
+        {
+            if(isTrap[i])
+                obstacles[i].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
