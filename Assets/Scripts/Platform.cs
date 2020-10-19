@@ -29,9 +29,8 @@ public class Platform : MonoBehaviour {
     }
     private void Update()
     {
-        //int enableTrapNumber = -1;
         trapTarget = new Vector2(transform.position.x, 1.8f);
-        //obstacles[enableTrapNumber].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+
         for(int i=0;i<obstacles.Length;i++)
         {
             if(isTrap[i])
