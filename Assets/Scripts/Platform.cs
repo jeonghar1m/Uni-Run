@@ -29,12 +29,12 @@ public class Platform : MonoBehaviour {
     }
     private void Update()
     {
-        trapTarget = new Vector2(transform.position.x, 1.8f);
+        trapTarget = new Vector2(transform.localPosition.x, transform.localPosition.y + 1.0f);
 
-        for(int i=0;i<obstacles.Length;i++)
+        for (int i = 0; i < obstacles.Length; i++)
         {
-            if(isTrap[i])
-                obstacles[i].transform.position = Vector2.MoveTowards(transform.position, trapTarget, 0.1f);
+            if (isTrap[i])
+                obstacles[i].transform.localPosition = Vector2.MoveTowards(transform.localPosition, trapTarget, 0.1f);
         }
     }
 
