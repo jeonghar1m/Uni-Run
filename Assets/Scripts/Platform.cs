@@ -6,6 +6,7 @@ public class Platform : MonoBehaviour {
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
     private Vector2 trapTarget;  //가시 이동 목표 지점
     private bool[] isTrap = new bool[3] { false, false, false };
+    private float width;
 
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
     private void OnEnable()
@@ -29,12 +30,13 @@ public class Platform : MonoBehaviour {
     }
     private void Update()
     {
-        trapTarget = new Vector2(transform.localPosition.x, transform.localPosition.y + 1.0f);
+        trapTarget = new Vector2(transform.localPosition.x, (transform.localPosition.y + 1.0f));
 
         for (int i = 0; i < obstacles.Length; i++)
         {
-            if (isTrap[i])
-                obstacles[i].transform.localPosition = Vector2.MoveTowards(transform.localPosition, trapTarget, 0.1f);
+            if (isTrap[i] && transform.position.x >= width && !GameManager.instance.isGameover) //i번째 가시가 활성화되고 발판이 플레이어에게 다가왔으며, 게임 오버상태가 아닐 때
+                obstacles[i].transform.Translate(new Vector2((transform.localPosition.x + 0.0f), (transform.localPosition.y + 1.0f)) * 1.0f * Time.deltaTime);
+                //obstacles[i].transform.localPosition = Vector2.MoveTowards(transform.localPosition, trapTarget, 0.1f);
         }
     }
 
