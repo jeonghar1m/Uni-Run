@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 // 발판으로서 필요한 동작을 담은 스크립트
 public class Platform : MonoBehaviour {
     public GameObject[] obstacles; // 장애물 오브젝트들
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
-    private Vector2 trapTarget;  //가시 이동 목표 지점
     private bool[] isTrap = new bool[3] { false, false, false };
     private float width;
 
@@ -30,13 +30,18 @@ public class Platform : MonoBehaviour {
     }
     private void Update()
     {
-        trapTarget = new Vector2(transform.localPosition.x, (transform.localPosition.y + 1.0f));
-
         for (int i = 0; i < obstacles.Length; i++)
         {
             if (isTrap[i] && transform.position.x >= width && !GameManager.instance.isGameover) //i번째 가시가 활성화되고 발판이 플레이어에게 다가왔으며, 게임 오버상태가 아닐 때
-                obstacles[i].transform.Translate(new Vector2((transform.localPosition.x + 0.0f), (transform.localPosition.y + 1.0f)) * 1.0f * Time.deltaTime);
-                //obstacles[i].transform.localPosition = Vector2.MoveTowards(transform.localPosition, trapTarget, 0.1f);
+            {
+                if (obstacles[i].transform.localPosition.y <= 1.8)   //가시의 local y좌표가 1.8 이하일 때
+                    obstacles[i].transform.Translate(Vector3.up * 2.0f * Time.deltaTime);
+            }
+            else if (isTrap[i] && transform.position.x < width && !GameManager.instance.isGameover) //i번째 가시가 활성화되고 발판이 플레이어에게서 멀어졌으며, 게임 오버상태가 아닐 때
+            {
+                if (obstacles[i].transform.localPosition.y >= 0.8)   //가시의 local y좌표가 0.8 이상일 때
+                    obstacles[i].transform.Translate(Vector3.down * 2.0f * Time.deltaTime);
+            }
         }
     }
 
