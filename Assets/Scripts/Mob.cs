@@ -10,7 +10,7 @@ public class Mob : MonoBehaviour
     private void OnEnable()
     {
 
-        if (Random.Range(0, 0) == 0)    //3분의 1 확률로 몹 활성화
+        if (Random.Range(0, 3) == 0)    //3분의 1 확률로 몹 활성화
         {
             mob.SetActive(true);
             isMob = true;
@@ -23,12 +23,12 @@ public class Mob : MonoBehaviour
     void Update()
     {
         bool isFirstMoving = true;
-        if (isMob && transform.position.x >= width && !GameManager.instance.isGameover)
+        if (isMob && transform.position.x >= width)
         {
-            if (isFirstMoving)  //맨 처음 왼쪽으로 이동
+            if (isFirstMoving && mob.transform.localPosition.x >= -4.0)  //맨 처음 왼쪽으로 이동
             {
                 mob.transform.Translate(Vector3.left * speed * Time.deltaTime);
-                if (mob.transform.localPosition.x == -4.0)
+                if (mob.transform.localPosition.x <= -4.0)
                     isFirstMoving = false;
             }
             else if(!isFirstMoving) //왼쪽으로 최대한 이동 후
