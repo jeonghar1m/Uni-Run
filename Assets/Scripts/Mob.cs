@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Mob : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Mob : MonoBehaviour
     private bool isMob = false;
     private float width;
     private float speed = 2.0f;
+    private int sign = -1;
+    private float minX = -4.0f;
+    private float maxX = 4.0f;
     private void OnEnable()
     {
 
@@ -22,27 +26,14 @@ public class Mob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isFirstMoving = true;
         if (isMob && transform.position.x >= width)
         {
-            if (isFirstMoving && mob.transform.localPosition.x >= -4.0)  //맨 처음 왼쪽으로 이동
+            mob.transform.localPosition += new Vector3(speed * Time.deltaTime * sign, 0, 0);
+
+            if (mob.transform.localPosition.x <= minX || mob.transform.localPosition.x >= maxX)
             {
-                mob.transform.Translate(Vector3.left * speed * Time.deltaTime);
-                if (mob.transform.localPosition.x <= -4.0)
-                    isFirstMoving = false;
-            }
-            else if (!isFirstMoving) //왼쪽으로 최대한 이동 후
-            {
-                if (mob.transform.localPosition.x <= -4.0)  //왼쪽 끝까지 도달했을 때
-                {
-                    mob.transform.Rotate(0, 180, 0);
-                    mob.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else if (mob.transform.localPosition.x >= 4.0)  //오른쪽 끝까지 도달했을 때
-                {
-                    mob.transform.Rotate(0, 180, 0);
-                    mob.transform.Translate(Vector3.left * speed * Time.deltaTime);
-                }
+                mob.transform.Rotate(0, 180, 0);
+                sign *= -1;
             }
         }
     }
