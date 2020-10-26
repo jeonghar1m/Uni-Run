@@ -4,11 +4,15 @@
 public class PlayerController : MonoBehaviour
 {
     public AudioClip deathClip; // 사망시 재생할 오디오 클립. private로 선언하면 사망음 재생 안됨.
+    public AudioClip jumpClip;
     private float jumpForce = 700f; // 점프 힘
 
     private int jumpCount = 0; // 누적 점프 횟수
     private bool isGrounded = false; // 바닥에 닿았는지 나타냄
     private bool isDead = false; // 사망 상태
+
+    private const int playerMaxHP = 5;  //플레이어의 체력 최대값
+    private int playerHP = playerMaxHP;   //플레이어의 현재 체력
 
     private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
     private Animator animator; // 사용할 애니메이터 컴포넌트
@@ -68,17 +72,35 @@ public class PlayerController : MonoBehaviour
         // 사망 상태를 true로 변경
         isDead = true;
 
+        GameManager.instance.PlayerDamaged(playerHP);
+
         //게임 매니저의 게임오버 처리 실행
         GameManager.instance.OnPlayerDead();
+    }
+
+    private void Damage()
+    {
+        playerHP--;
+
+        // 오디오 소스에 할당된 오디오 클립을 deathClip으로 변경
+        playerAudio.clip = deathClip;
+        // 사망 효과음 재생
+        playerAudio.Play();
+
+        GameManager.instance.PlayerDamaged(1);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Dead" && !isDead) //플레이어와 가시 및 라바 블록 충돌
         {
-            // 충돌한 상대방의 태그가 Dead이며 아직 사망하지 않았다면 Die() 실행
-            Die();
+            if (playerHP > 1)
+                Damage();
+            else if (playerHP <= 1)
+                Die();
         }
+        else if(other.tag == "Fall" && !isDead)
+            Die();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
