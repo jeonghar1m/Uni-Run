@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour {
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
     private bool[] isTrap = new bool[3] { false, false, false };
     private float width;
-    private float speed = 2.0f;
+    private float speed = 5.0f;
 
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
     private void OnEnable()

@@ -31,7 +31,7 @@ public class Mob : MonoBehaviour
                 if (mob.transform.localPosition.x <= -4.0)
                     isFirstMoving = false;
             }
-            else if(!isFirstMoving) //왼쪽으로 최대한 이동 후
+            else if (!isFirstMoving) //왼쪽으로 최대한 이동 후
             {
                 if (mob.transform.localPosition.x <= -4.0)  //왼쪽 끝까지 도달했을 때
                 {
