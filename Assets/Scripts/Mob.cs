@@ -33,12 +33,12 @@ public class Mob : MonoBehaviour
             }
             else if(!isFirstMoving) //왼쪽으로 최대한 이동 후
             {
-                if (mob.transform.localPosition.x <= -4.0)
+                if (mob.transform.localPosition.x <= -4.0)  //왼쪽 끝까지 도달했을 때
                 {
                     mob.transform.Rotate(0, 180, 0);
                     mob.transform.Translate(Vector3.right * speed * Time.deltaTime);
                 }
-                else if (mob.transform.localPosition.x >= 4.0)
+                else if (mob.transform.localPosition.x >= 4.0)  //오른쪽 끝까지 도달했을 때
                 {
                     mob.transform.Rotate(0, 180, 0);
                     mob.transform.Translate(Vector3.left * speed * Time.deltaTime);
