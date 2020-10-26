@@ -10,7 +10,7 @@ public class Mob : MonoBehaviour
     private void OnEnable()
     {
 
-        if (Random.Range(0, 3) == 0)    //3분의 1 확률로 몹 활성화
+        if (Random.Range(0, 2) == 0)    //2분의 1 확률로 몹 활성화
         {
             mob.SetActive(true);
             isMob = true;
