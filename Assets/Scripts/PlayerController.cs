@@ -82,10 +82,8 @@ public class PlayerController : MonoBehaviour
     {
         playerHP--;
 
-        // 오디오 소스에 할당된 오디오 클립을 deathClip으로 변경
-        playerAudio.clip = deathClip;
-        // 사망 효과음 재생
-        playerAudio.Play();
+        // deathClip 1회 재생
+        playerAudio.PlayOneShot(deathClip);
 
         GameManager.instance.PlayerDamaged(1);
     }
@@ -99,7 +97,7 @@ public class PlayerController : MonoBehaviour
             else if (playerHP <= 1)
                 Die();
         }
-        else if(other.tag == "Fall" && !isDead)
+        else if (other.tag == "Fall" && !isDead)
             Die();
     }
 
