@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 // PlayerController는 플레이어 캐릭터로서 Player 게임 오브젝트를 제어한다.
 public class PlayerController : MonoBehaviour
 {
     public AudioClip deathClip; // 사망시 재생할 오디오 클립. private로 선언하면 사망음 재생 안됨.
     public AudioClip jumpClip;
+    public AudioClip coinClip;
     private float jumpForce = 700f; // 점프 힘
 
     private int jumpCount = 0; // 누적 점프 횟수
@@ -99,6 +101,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Fall" && !isDead)
             Die();
+
+        if(other.tag == "Coin" && !isDead)
+        {
+            playerAudio.PlayOneShot(coinClip);
+            GameManager.instance.AddScore(1);   //코인 먹으면 1점 추가
+            Destroy(other.gameObject);  //먹은 코인 맵에서 삭제
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

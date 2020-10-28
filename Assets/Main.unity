@@ -1672,6 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathClip: {fileID: 8300000, guid: 668a107660fa54fe98e03b698a09aa49, type: 3}
   jumpClip: {fileID: 8300000, guid: 7e1e32c51f4da464c97260039524fe15, type: 3}
+  coinClip: {fileID: 8300000, guid: 493f68788826b1348a61d98a37ef06a5, type: 3}
 --- !u!1 &1939524900
 GameObject:
   m_ObjectHideFlags: 0

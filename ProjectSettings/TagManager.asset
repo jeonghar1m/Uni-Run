@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dead
   - Fall
+  - Coin
   layers:
   - Default
   - TransparentFX
