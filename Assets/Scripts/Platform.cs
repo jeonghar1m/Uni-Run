@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour {
     private bool[] isTrap = new bool[3] { false, false, false };
     private float width;
     private float speed = 5.0f;
+    private float platformSpeed = 2.0f;
 
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
     private void OnEnable()
@@ -51,9 +52,9 @@ public class Platform : MonoBehaviour {
 
         //발판을 위아래로 왔다갔다 하게 해주는 코드
         if(transform.position.y >= 5.0)
-            this.transform.Translate(Vector3.up * speed * Time.deltaTime);
+            this.transform.Translate(Vector3.up * platformSpeed * Time.deltaTime);
         else if(transform.position.y <= -5.0)
-            this.transform.Translate(Vector3.down * speed * Time.deltaTime);
+            this.transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
