@@ -4,6 +4,7 @@ using UnityEngine;
 // 발판으로서 필요한 동작을 담은 스크립트
 public class Platform : MonoBehaviour {
     public GameObject[] obstacles; // 장애물 오브젝트들
+    public GameObject[] coins;     //코인 오브젝트들
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
     private bool[] isTrap = new bool[3] { false, false, false };
     private float width;
@@ -27,6 +28,15 @@ public class Platform : MonoBehaviour {
             }
             else
                 obstacles[i].SetActive(false);
+        }
+
+        //코인 수 만큼 루프
+        for(int i=0;i<coins.Length;i++)
+        {
+            if (Random.Range(0, 2) == 0)
+                coins[i].SetActive(true);
+            else
+                coins[i].SetActive(false);
         }
     }
     private void Update()
