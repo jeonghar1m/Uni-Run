@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 마우스 왼쪽 버튼을 눌렀으며 && 최대 점프 횟수(2)에 도달하지 않았다면
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 10)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2)
         {
             // 점프 횟수 증가
             jumpCount++;
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DamageCoolTime()    //데미지를 입고 1.5초 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
     {
-        yield return new WaitForSeconds(1.5f);  //1.5초간 무적
+        yield return new WaitForSeconds(3.0f);  //3초간 무적
         isDamageCoolTime = false;
     }
 }
