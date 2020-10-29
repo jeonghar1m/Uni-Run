@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // PlayerController는 플레이어 캐릭터로서 Player 게임 오브젝트를 제어한다.
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
             if (playerHP > 1)
                 Damage();
             else if (playerHP <= 1)
-                Die();
+                StartCoroutine(PlayerDestroy());
         }
         else if (other.tag == "Fall" && !isDead)
             Die();
@@ -125,5 +126,12 @@ public class PlayerController : MonoBehaviour
     {
         // 어떤 콜라이더에서 떼어진 경우 isGrounded를 false로 변경
         isGrounded = false;
+    }
+
+    private IEnumerator PlayerDestroy() //플레이어 사망시 플레이어 오브젝트를 소멸시켜주는 코루틴
+    {
+        Die();
+        yield return new WaitForSeconds(3.0f);  //3초 후에
+        Destroy(this.gameObject);   //플레이어 오브젝트 소멸
     }
 }
