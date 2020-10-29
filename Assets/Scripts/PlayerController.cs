@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private const int playerMaxHP = 5;  //플레이어의 체력 최대값
     private int playerHP = playerMaxHP;   //플레이어의 현재 체력
 
+    private bool isDamageCoolTime = false;  //데미지 쿨타임
+
     private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
     private Animator animator; // 사용할 애니메이터 컴포넌트
     private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
@@ -96,8 +98,15 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Dead" && !isDead) //플레이어와 가시 및 라바 블록 충돌
         {
             if (playerHP > 1)
-                Damage();
-            else if (playerHP <= 1)
+            {
+                if (!isDamageCoolTime)
+                {
+                    Damage();
+                    isDamageCoolTime = true;    //일시적으로 데미지를 받지 않게 해준다.
+                    StartCoroutine(DamageCoolTime());
+                }
+            }
+            else if (playerHP <= 1 && !isDamageCoolTime)
                 StartCoroutine(PlayerDestroy());
         }
         else if (other.tag == "Fall" && !isDead)
@@ -133,5 +142,11 @@ public class PlayerController : MonoBehaviour
         Die();
         yield return new WaitForSeconds(3.0f);  //3초 후에
         Destroy(this.gameObject);   //플레이어 오브젝트 소멸
+    }
+
+    private IEnumerator DamageCoolTime()    //데미지를 입고 1.5초 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
+    {
+        yield return new WaitForSeconds(1.5f);  //1.5초간 무적
+        isDamageCoolTime = false;
     }
 }
