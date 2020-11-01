@@ -7,6 +7,8 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject blockPrefab; // 생성할 블록의 원본 프리팹
     private int count = 10; // 생성할 발판의 개수
 
+    private float platformSpeed = 2.0f;
+
     private float timeBetSpawnMin = 1.25f; // 다음 배치까지의 시간 간격 최솟값
     private float timeBetSpawnMax = 2.25f; // 다음 배치까지의 시간 간격 최댓값
     private float timeBetSpawn; // 다음 배치까지의 시간 간격
@@ -75,8 +77,11 @@ public class PlatformSpawner : MonoBehaviour
             platforms[currentIndex].transform.position = new Vector2(xPos, platformsYPos);
             blocks[currentIndex].transform.position = new Vector2(xPos, blocksYPos);
 
-            if (blocksYPos <= platformsYPos)             //블록의 y축이 플랫폼의 y축보다 작거나 같으면
-                blocks[currentIndex].SetActive(false);  //해당 순서의 블록 제거
+            //발판을 위아래로 왔다갔다 하게 해주는 코드
+            if (platforms[currentIndex].transform.position.y >= 5.0)
+                platforms[currentIndex].transform.Translate(Vector3.up * platformSpeed * Time.deltaTime);
+            else if (platforms[currentIndex].transform.position.y <= -5.0)
+                platforms[currentIndex].transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
 
             //순번 넘기기
             currentIndex++;
