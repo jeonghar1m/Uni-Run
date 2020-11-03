@@ -12,9 +12,13 @@ public class GameManager : MonoBehaviour {
 
     public bool isGameover = false; // 게임 오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
+    public Text timeText; //타이머를 출력할 UI 텍스트
+    public Text hpText; //HP를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
     private int score = 0; // 게임 점수
+
+    private int currentHP = 5; //플레이어 HP
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -44,19 +48,28 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        // 게임 오버 상태에서 게임을 재시작할 수 있게 하는 처리
-        if (isGameover && Input.GetMouseButtonDown(0))  //게임오버 상태에서 마우스 좌클하면 현재 씬 재시작
+        // 게임을 재시작할 수 있게 하는 처리
+        if (Input.GetKeyDown(KeyCode.R))  //R 누르면 현재 씬 재시작
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (!isGameover)
+            timeText.text = "Time: " + (int)Time.timeSinceLevelLoad;
     }
 
     // 점수를 증가시키는 메서드
     public void AddScore(int newScore) {
-        if(!isGameover)
+        if (!isGameover)
         {
             //점수 증가
             score += newScore;
             scoreText.text = "Score: " + score;
         }
+    }
+
+    public void PlayerDamaged(int damage)
+    {
+        currentHP -= damage;
+        hpText.text = "HP: " + currentHP + " / 5";
     }
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
