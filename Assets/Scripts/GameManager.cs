@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P) && !isGameover)
             GamePause();
 
+        if(Input.GetKeyDown(KeyCode.Q) && Time.timeScale == 1)
+            SceneManager.LoadScene("Title");
+
     }
 
     // 점수를 증가시키는 메서드
