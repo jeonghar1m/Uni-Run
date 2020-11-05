@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public Text timeText; //타이머를 출력할 UI 텍스트
     public Text hpText; //HP를 출력할 UI 텍스트
+    public GameObject pauseText;  //게임 일시정지를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
     private int score = 0; // 게임 점수
@@ -49,11 +50,15 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         // 게임을 재시작할 수 있게 하는 처리
-        if (Input.GetKeyDown(KeyCode.R))  //R 누르면 현재 씬 재시작
+        if (Input.GetKeyDown(KeyCode.R) && Time.timeScale == 1)  //R 누르면 현재 씬 재시작. 일시정지 상태에서는 작동 안함.
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         if (!isGameover)
             timeText.text = "Time: " + (int)Time.timeSinceLevelLoad;
+
+        if (Input.GetKeyDown(KeyCode.P) && !isGameover)
+            GamePause();
+
     }
 
     // 점수를 증가시키는 메서드
@@ -77,5 +82,20 @@ public class GameManager : MonoBehaviour {
         isGameover = true;
         gameoverUI.SetActive(true);
         playerAudio.Stop();
+    }
+
+    public void GamePause()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            pauseText.SetActive(true);
+
+        }
+        else if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            pauseText.SetActive(false);
+        }
     }
 }
