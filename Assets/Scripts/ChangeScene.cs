@@ -7,7 +7,7 @@ public class ChangeScene : MonoBehaviour
 {
     void Update()
     {
-        // 게임을 재시작할 수 있게 하는 처리
+        // 다음 스테이지로 이동할 때
         if (Input.GetKeyDown(KeyCode.Return))
             SceneManager.LoadScene("Main");
 
