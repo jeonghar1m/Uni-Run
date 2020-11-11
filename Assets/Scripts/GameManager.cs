@@ -65,14 +65,15 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene("Title");
 
         if (score >= 20 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
-            if (!isLastChapter)
+        {
+            if (SceneManager.GetActiveScene().name == "Main")
             {
                 SceneManager.LoadScene("LevelComplete");
                 isLastChapter = true;
             }
-            else if (isLastChapter)
-                SceneManager.LoadScene("Title");
-
+            else
+                SceneManager.LoadScene("Ending");
+        }
     }
 
     // 점수를 증가시키는 메서드
