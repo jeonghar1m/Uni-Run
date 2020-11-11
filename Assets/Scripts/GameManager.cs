@@ -90,6 +90,13 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerDamaged(int damage)
     {
+        if (currentLevel == 2)
+        {
+            if (score > 3)  //스코어가 음수가 되는 것을 방지하기 위해
+                score -= 3;
+            else
+                score = 0;
+        }
         currentHP -= damage;
         hpText.text = "HP: " + currentHP + " / 5";
     }
