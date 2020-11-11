@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseText;  //게임 일시정지를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
+    public static int currentLevel = 1;    //현재 레벨
+
     private int score = 0; // 게임 점수
 
     private int currentHP = 5; //플레이어 HP
