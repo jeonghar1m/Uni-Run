@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 
     private int currentHP = 5; //플레이어 HP
 
+    private static bool isLastChapter = false;  //마지막 챕터인지 아닌지.
+
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
         // 싱글톤 변수 instance가 비어있는가?
@@ -62,8 +64,14 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Q) && Time.timeScale == 1)
             SceneManager.LoadScene("Title");
 
-        if(score >= 20 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
-            SceneManager.LoadScene("LevelComplete");
+        if (score >= 20 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
+            if (!isLastChapter)
+            {
+                SceneManager.LoadScene("LevelComplete");
+                isLastChapter = true;
+            }
+            else if (isLastChapter)
+                SceneManager.LoadScene("Title");
 
     }
 
