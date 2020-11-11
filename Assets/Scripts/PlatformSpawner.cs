@@ -77,12 +77,6 @@ public class PlatformSpawner : MonoBehaviour
             platforms[currentIndex].transform.position = new Vector2(xPos, platformsYPos);
             blocks[currentIndex].transform.position = new Vector2(xPos, blocksYPos);
 
-            //발판을 위아래로 왔다갔다 하게 해주는 코드
-            if (platforms[currentIndex].transform.position.y >= 5.0)
-                platforms[currentIndex].transform.Translate(Vector3.up * platformSpeed * Time.deltaTime);
-            else if (platforms[currentIndex].transform.position.y <= -5.0)
-                platforms[currentIndex].transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
-
             //순번 넘기기
             currentIndex++;
 
