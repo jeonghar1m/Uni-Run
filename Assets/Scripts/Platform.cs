@@ -1,10 +1,12 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 발판으로서 필요한 동작을 담은 스크립트
 public class Platform : MonoBehaviour {
     public GameObject[] obstacles; // 장애물 오브젝트들
     public GameObject[] coins;     //코인 오브젝트들
+    public GameObject pill;
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
     private bool[] isTrap = new bool[3] { false, false, false };
     private float width;
@@ -38,6 +40,12 @@ public class Platform : MonoBehaviour {
             else
                 coins[i].SetActive(false);
         }
+
+        //알약 생성
+        if (Random.Range(0, 3) == 0 && SceneManager.GetActiveScene().name == "Main2")   //2레벨에서 1/3 확률로 회복 아이템(알약) 생성
+            pill.SetActive(true);
+        else
+            pill.SetActive(false);
     }
     private void Update()
     {

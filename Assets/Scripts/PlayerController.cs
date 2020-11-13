@@ -118,6 +118,17 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.AddScore(1);   //코인 먹으면 1점 추가
             Destroy(other.gameObject);  //먹은 코인 맵에서 삭제
         }
+
+        if(other.tag == "Heal" && !isDead)
+        {
+            playerAudio.PlayOneShot(coinClip);
+            if (playerHP < playerMaxHP)
+            {
+                playerHP++;
+                GameManager.instance.PlayerDamaged(-1);
+            }
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
