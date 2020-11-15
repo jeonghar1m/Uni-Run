@@ -42,7 +42,7 @@ public class Platform : MonoBehaviour {
         }
 
         //알약 생성
-        if (Random.Range(0, 3) == 0 && SceneManager.GetActiveScene().name == "Main2")   //2레벨에서 1/3 확률로 회복 아이템(알약) 생성
+        if (Random.Range(0, 3) == 0 && GameManager.currentLevel >= 2)   //2레벨에서 1/3 확률로 회복 아이템(알약) 생성
             pill.SetActive(true);
         else
             pill.SetActive(false);
