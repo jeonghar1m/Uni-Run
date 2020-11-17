@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour {
 
         if (score >= 20 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
         {
-            if (SceneManager.GetActiveScene().name == "Main")
+            if (GameManager.currentLevel == 1)
                 SceneManager.LoadScene("LevelComplete");
             else
                 SceneManager.LoadScene("Ending");

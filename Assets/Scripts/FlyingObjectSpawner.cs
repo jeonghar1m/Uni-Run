@@ -4,7 +4,8 @@
 public class FlyingObjectSpawner : MonoBehaviour
 {
     public GameObject flyingLavaPrefab;
-    private int count = 10; // 생성할 발판의 개수
+    private int count = 10; // 생성할 비행체의 개수
+
 
     private float objectSpeed = 2.0f;
 
@@ -28,9 +29,12 @@ public class FlyingObjectSpawner : MonoBehaviour
     {
         lavas = new GameObject[count];
 
-        //count 만큼 루프하면서 비행체 생성
-        for (int i = 0; i < count; i++)
-            lavas[i] = Instantiate(flyingLavaPrefab, lavasPoolPosition, Quaternion.identity);
+        if (GameManager.currentLevel == 2)
+        {
+            //count 만큼 루프하면서 비행체 생성
+            for (int i = 0; i < count; i++)
+                lavas[i] = Instantiate(flyingLavaPrefab, lavasPoolPosition, Quaternion.identity);
+        }
         //마지막 배치 시점 초기화
         lastSpawnTime = 0f;
         //다음번 배치까지의 시간 간격 0초기화

@@ -12,7 +12,7 @@ public class GoToNextChapter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             GameManager.currentLevel++;
-            SceneManager.LoadScene("Main2");
+            SceneManager.LoadScene("Main");
         }
     }
 }
