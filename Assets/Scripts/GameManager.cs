@@ -102,10 +102,13 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerDamaged(int damage)
     {
-        GameObject hudText = Instantiate(hudDamageText);
-        hudText.transform.position = damageHudPos.position;
-        if(damage != -1)
+        if (damage > 0)
+        {
+            GameObject hudText = Instantiate(hudDamageText);
+            hudText.transform.position = damageHudPos.position;
             hudText.GetComponent<DamageScript>().damage = damage;
+        }
+
         if (currentLevel >= 2)
         {
             if (score > 2)  //스코어가 음수가 되는 것을 방지하기 위해
