@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     public bool isGameover = false; // 게임 오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public Text timeText; //타이머를 출력할 UI 텍스트
-    public Text hpText; //HP를 출력할 UI 텍스트
+    public Slider hpBar;    //플레이어의 HP바
     public Text levelText;    //스테이지를 알려주는 UI 텍스트
 
     public GameObject pauseText;  //게임 일시정지를 출력할 UI 텍스트
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
                 score = 0;
         }
         currentHP -= damage;
-        hpText.text = "HP: " + currentHP + " / 5";
+        hpBar.value -= (damage * 0.2f);
     }
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
