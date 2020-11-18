@@ -447,6 +447,9 @@ MonoBehaviour:
   levelText: {fileID: 1041007379}
   pauseText: {fileID: 2023942799}
   gameoverUI: {fileID: 1792293118}
+  hudDamageText: {fileID: 5320397959073193946, guid: 09b4c41440e89454482a2d1f6da6bc6c,
+    type: 3}
+  damageHudPos: {fileID: 1312659195}
 --- !u!4 &219704575
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,6 +1013,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041007377}
   m_CullTransparentMesh: 0
+--- !u!1 &1312659194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312659195}
+  m_Layer: 0
+  m_Name: Hud
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312659195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312659194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1863801602}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423021712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1589,7 @@ GameObject:
   - component: {fileID: 1863801604}
   - component: {fileID: 1863801603}
   - component: {fileID: 1863801605}
+  - component: {fileID: 1863801606}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1661,7 +1695,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 6, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1312659195}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1795,6 +1830,20 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 668a107660fa54fe98e03b698a09aa49, type: 3}
   jumpClip: {fileID: 8300000, guid: 7e1e32c51f4da464c97260039524fe15, type: 3}
   coinClip: {fileID: 8300000, guid: 493f68788826b1348a61d98a37ef06a5, type: 3}
+--- !u!114 &1863801606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863801598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f0a77e557a40a4a94ba44e317c6806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudDamageText: {fileID: 5320397959073193946, guid: 09b4c41440e89454482a2d1f6da6bc6c,
+    type: 3}
 --- !u!1 &1939524900
 GameObject:
   m_ObjectHideFlags: 0

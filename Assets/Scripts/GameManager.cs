@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour {
     private const float MaxHp = 5f;     //플레이어의 최대 HP
     private float currentHP = 5f;       //플레이어의 현재 HP
 
+    public GameObject hudDamageText;
+    public Transform damageHudPos;
+
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
         // 싱글톤 변수 instance가 비어있는가?
@@ -94,6 +97,9 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerDamaged(int damage)
     {
+        GameObject hudText = Instantiate(hudDamageText);
+        hudText.transform.position = damageHudPos.position;
+        hudText.GetComponent<DamageScript>().damage = damage;
         if (currentLevel >= 2)
         {
             if (score > 2)  //스코어가 음수가 되는 것을 방지하기 위해
