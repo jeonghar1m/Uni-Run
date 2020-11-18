@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour {
     public static int currentLevel = 1;    //현재 레벨
 
     private int score = 0; // 게임 점수
-
-    private int currentHP = 5; //플레이어 HP
+    
+    private const float MaxHp = 5f;     //플레이어의 최대 HP
+    private float currentHP = 5f;       //플레이어의 현재 HP
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -76,6 +77,9 @@ public class GameManager : MonoBehaviour {
             else
                 SceneManager.LoadScene("Ending");
         }
+
+        if(currentHP < MaxHp)
+            hpBar.value = Mathf.Lerp(hpBar.value, currentHP / MaxHp, Time.deltaTime * 5f);
     }
 
     // 점수를 증가시키는 메서드
@@ -98,7 +102,6 @@ public class GameManager : MonoBehaviour {
                 score = 0;
         }
         currentHP -= damage;
-        hpBar.value -= (damage * 0.2f);
     }
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
