@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour {
 
         if(currentHP < MaxHp)
             hpBar.value = Mathf.Lerp(hpBar.value, currentHP / MaxHp, Time.deltaTime * 5f);
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.N) && !isGameover && currentLevel < 2)
+            currentLevel++;
+#endif
     }
 
     // 점수를 증가시키는 메서드
@@ -99,7 +104,8 @@ public class GameManager : MonoBehaviour {
     {
         GameObject hudText = Instantiate(hudDamageText);
         hudText.transform.position = damageHudPos.position;
-        hudText.GetComponent<DamageScript>().damage = damage;
+        if(damage != -1)
+            hudText.GetComponent<DamageScript>().damage = damage;
         if (currentLevel >= 2)
         {
             if (score > 2)  //스코어가 음수가 되는 것을 방지하기 위해
