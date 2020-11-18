@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
         if (currentLevel >= 2)
         {
             if (score > 2)  //스코어가 음수가 되는 것을 방지하기 위해
-                score -= 2;
+                score -= (damage * 2);
             else
                 score = 0;
         }
