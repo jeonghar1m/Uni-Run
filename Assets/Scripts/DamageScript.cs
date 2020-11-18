@@ -6,7 +6,6 @@ using TMPro;
 public class DamageScript : MonoBehaviour
 {
     private float moveSpeed = 2.0f; //텍스트 이동 속도
-    private float alphaSpeed = 2.0f;    //투명도 변환 속도
     private float destroyTime = 2.0f;
     public int damage;
     TextMeshPro damageText;
@@ -25,7 +24,7 @@ public class DamageScript : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime));
-        damageTextColor.a = Mathf.Lerp(damageTextColor.a, 0, Time.deltaTime);
+        damageTextColor.a = Mathf.Lerp(damageTextColor.a, 0, Time.deltaTime * destroyTime);
         damageText.color = damageTextColor;
     }
 
