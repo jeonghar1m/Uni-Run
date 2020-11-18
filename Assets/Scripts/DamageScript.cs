@@ -10,7 +10,6 @@ public class DamageScript : MonoBehaviour
     public int damage;
     TextMeshPro damageText;
     Color damageTextColor;
-    Color healTextColor;
     // Start is called before the first frame update
     void Start()
     {
