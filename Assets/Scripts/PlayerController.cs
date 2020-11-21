@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         Destroy(this.gameObject);   //플레이어 오브젝트 소멸
     }
 
-    private IEnumerator DamageCoolTime()    //데미지를 입고 1.5초 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
+    private IEnumerator DamageCoolTime()    //데미지를 입고 3초 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
     {
         yield return new WaitForSeconds(3.0f);  //3초간 무적
         isDamageCoolTime = false;
