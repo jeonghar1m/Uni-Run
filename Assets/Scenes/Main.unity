@@ -1589,7 +1589,6 @@ GameObject:
   - component: {fileID: 1863801604}
   - component: {fileID: 1863801603}
   - component: {fileID: 1863801605}
-  - component: {fileID: 1863801606}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1830,20 +1829,6 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 668a107660fa54fe98e03b698a09aa49, type: 3}
   jumpClip: {fileID: 8300000, guid: 7e1e32c51f4da464c97260039524fe15, type: 3}
   coinClip: {fileID: 8300000, guid: 493f68788826b1348a61d98a37ef06a5, type: 3}
---- !u!114 &1863801606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863801598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f0a77e557a40a4a94ba44e317c6806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hudDamageText: {fileID: 5320397959073193946, guid: 09b4c41440e89454482a2d1f6da6bc6c,
-    type: 3}
 --- !u!1 &1939524900
 GameObject:
   m_ObjectHideFlags: 0
