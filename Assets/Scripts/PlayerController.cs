@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
     private Animator animator; // 사용할 애니메이터 컴포넌트
     private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
+    private SpriteRenderer render;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -155,9 +157,25 @@ public class PlayerController : MonoBehaviour
         Destroy(this.gameObject);   //플레이어 오브젝트 소멸
     }
 
-    private IEnumerator DamageCoolTime()    //데미지를 입고 3초 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
+    private IEnumerator DamageCoolTime()    //데미지를 입고 일정 시간 동안은 다른 장애물과 충돌해도 일시적으로 무적으로 만들어주는 코루틴
     {
-        yield return new WaitForSeconds(3.0f);  //3초간 무적
+        int countTime = 0;
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+                render.color = new Color32(255, 255, 255, 90);
+            else
+                render.color = new Color32(255, 255, 255, 180);
+
+            yield return new WaitForSeconds(0.3f);
+
+            countTime++;
+        }
+        render.color = new Color32(255, 255, 255, 255);
+
+
         isDamageCoolTime = false;
+
+        yield return null;
     }
 }
