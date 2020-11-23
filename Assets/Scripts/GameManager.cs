@@ -84,13 +84,13 @@ public class GameManager : MonoBehaviour {
         if(currentHP < MaxHp)
             hpBar.value = Mathf.Lerp(hpBar.value, currentHP / MaxHp, Time.deltaTime * 5f);
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.N) && !isGameover && currentLevel < 2)
         {
             currentLevel++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-#endif
+        #endif
     }
 
     // 점수를 증가시키는 메서드
