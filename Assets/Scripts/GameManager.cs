@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour {
     private const float MaxHp = 5f;     //플레이어의 최대 HP
     private float currentHP = 5f;       //플레이어의 현재 HP
 
+    private const int lastChapter = 2;  //최종 챕터
+
     public GameObject hudDamageText;
     public Transform damageHudPos;
 
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour {
             hpBar.value = Mathf.Lerp(hpBar.value, currentHP / MaxHp, Time.deltaTime * 5f);
 
         #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.N) && !isGameover && currentLevel < 2)
+        if (Input.GetKeyDown(KeyCode.N) && !isGameover && currentLevel < lastChapter)
         {
             currentLevel++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -112,9 +114,9 @@ public class GameManager : MonoBehaviour {
             hudText.GetComponent<DamageScript>().damage = damage;
         }
 
-        if (currentLevel >= 2)
+        if (currentLevel >= lastChapter)
         {
-            if (score > 2)  //스코어가 음수가 되는 것을 방지하기 위해
+            if (score > lastChapter)  //스코어가 음수가 되는 것을 방지하기 위해
                 score -= (damage * 2);
             else
                 score = 0;
