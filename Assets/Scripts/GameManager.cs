@@ -19,14 +19,13 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseText;  //게임 일시정지를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
+    public const int lastChapter = 2;  //최종 챕터
     public static int currentLevel = 1;    //현재 레벨
 
     private int score = 0; // 게임 점수
     
     private const float MaxHp = 5f;     //플레이어의 최대 HP
     private float currentHP = 5f;       //플레이어의 현재 HP
-
-    private const int lastChapter = 2;  //최종 챕터
 
     public GameObject hudDamageText;
     public Transform damageHudPos;

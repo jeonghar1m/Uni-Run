@@ -17,7 +17,7 @@ public class ChangeScene : MonoBehaviour
 
     public void ChangeTitleScene()
     {
-        if (GameManager.currentLevel == 2)
+        if (GameManager.currentLevel == GameManager.lastChapter)
             GameManager.currentLevel = 1;
         SceneManager.LoadScene("Title");
     }

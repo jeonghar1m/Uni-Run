@@ -29,7 +29,7 @@ public class FlyingObjectSpawner : MonoBehaviour
     {
         lavas = new GameObject[count];
 
-        if (GameManager.currentLevel == 2)
+        if (GameManager.currentLevel >= 2)
         {
             //count 만큼 루프하면서 비행체 생성
             for (int i = 0; i < count; i++)
