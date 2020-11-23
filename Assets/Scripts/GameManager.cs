@@ -86,7 +86,10 @@ public class GameManager : MonoBehaviour {
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.N) && !isGameover && currentLevel < 2)
+        {
             currentLevel++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 #endif
     }
 
