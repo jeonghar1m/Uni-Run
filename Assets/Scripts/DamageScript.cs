@@ -6,7 +6,7 @@ using TMPro;
 public class DamageScript : MonoBehaviour
 {
     private float moveSpeed = 2.0f; //텍스트 이동 속도
-    private float destroyTime = 2.0f;
+    private float destroyTime = 2.0f;   //텍스트가 생기고나서부터 파괴되기 까지의 시간
     public int damage;
     TextMeshPro damageText;
     Color damageTextColor;
