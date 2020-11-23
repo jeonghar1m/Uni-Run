@@ -16,15 +16,15 @@ public class DamageScript : MonoBehaviour
         damageText = GetComponent<TextMeshPro>();
         damageText.text = damage.ToString();
         damageTextColor = damageText.color;
-        Invoke("DestroyObject", destroyTime);
+        Invoke("DestroyObject", destroyTime);   //맨 밑에 있는 destroyObject 소환
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime));
-        damageTextColor.a = Mathf.Lerp(damageTextColor.a, 0, Time.deltaTime * destroyTime);
-        damageText.color = damageTextColor;
+        transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime));    //데미지 효과가 위로 올라가는 효과
+        damageTextColor.a = Mathf.Lerp(damageTextColor.a, 0, Time.deltaTime * destroyTime); //0에 가까워짐
+        damageText.color = damageTextColor; //초기화
     }
 
     private void DestroyObject()
