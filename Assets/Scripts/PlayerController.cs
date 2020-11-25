@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false; // 바닥에 닿았는지 나타냄
     private bool isDead = false; // 사망 상태
 
-    private const int playerMaxHP = 5;  //플레이어의 체력 최대값
+    private const int playerMaxHP = 1000;  //플레이어의 체력 최대값
     private int playerHP = playerMaxHP;   //플레이어의 현재 체력
 
     private bool isDamageCoolTime = false;  //데미지 쿨타임
@@ -87,12 +87,13 @@ public class PlayerController : MonoBehaviour
 
     private void Damage()
     {
-        playerHP--;
+        int damageValue = Random.Range(100, 199);
+        playerHP -= damageValue;
 
         // deathClip 1회 재생
         playerAudio.PlayOneShot(deathClip);
 
-        GameManager.instance.PlayerDamaged(1);
+        GameManager.instance.PlayerDamaged(damageValue);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

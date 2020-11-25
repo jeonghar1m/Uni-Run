@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour {
 
     private int score = 0; // 게임 점수
     
-    private const float MaxHp = 5f;     //플레이어의 최대 HP
-    private float currentHP = 5f;       //플레이어의 현재 HP
+    private const float MaxHp = 1000f;     //플레이어의 최대 HP
+    private float currentHP = MaxHp;       //플레이어의 현재 HP
 
     public GameObject hudDamageText;
     public Transform damageHudPos;
