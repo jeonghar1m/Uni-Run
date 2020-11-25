@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        int healValue = Random.Range(100, 199);
         if (other.tag == "Dead" && !isDead) //플레이어와 가시 및 라바 블록 충돌
         {
             if (playerHP > 1)
@@ -127,8 +128,8 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(coinClip);
             if (playerHP < playerMaxHP)
             {
-                playerHP++;
-                GameManager.instance.PlayerDamaged(-1); //체력 1 회복
+                playerHP += healValue;
+                GameManager.instance.PlayerDamaged(healValue * (-1)); //체력 1 회복
             }
             Destroy(other.gameObject);
         }
@@ -170,7 +171,7 @@ public class PlayerController : MonoBehaviour
                 render.color = new Color32(255, 255, 255, 255);
             //피격당한 캐릭터 오브젝트가 깜빡거리는 효과 끝
 
-            yield return new WaitForSeconds(0.1f);  //0.1초 동안 깜빡거림
+            yield return new WaitForSeconds(0.3f);  //0.1초 동안 깜빡거림
 
             countTime++;    //카운트 1 증가.
         }
