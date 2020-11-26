@@ -88,7 +88,10 @@ public class PlayerController : MonoBehaviour
     private void Damage()
     {
         int damageValue = Random.Range(100, 199);
-        playerHP -= damageValue;
+        if(playerHP > damageValue)
+            playerHP -= damageValue;
+        else
+            StartCoroutine(PlayerDestroy());
 
         // deathClip 1회 재생
         playerAudio.PlayOneShot(deathClip);

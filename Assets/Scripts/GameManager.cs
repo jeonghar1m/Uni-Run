@@ -121,7 +121,11 @@ public class GameManager : MonoBehaviour {
             else
                 score = 0;
         }
-        currentHP -= damage;
+
+        if (currentHP > damage)
+            currentHP -= damage;
+        else
+            currentHP = 0;
         hpText.text = "HP: " + currentHP + " / " + MaxHp;
     }
 
