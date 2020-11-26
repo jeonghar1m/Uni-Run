@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Q) && Time.timeScale == 1)
             SceneManager.LoadScene("Title");
 
-        if (score >= 20 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
+        if (score >= 50 && !isGameover) //점수가 20점 이상이면 다음 레벨로 넘어가는 스크립트
         {
             if (GameManager.currentLevel == 1)
                 SceneManager.LoadScene("LevelComplete");
