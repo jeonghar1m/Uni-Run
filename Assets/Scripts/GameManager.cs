@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
     public GameObject hudDamageText;
     public Transform damageHudPos;
 
+    CameraShake Camera;
+
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
         // 싱글톤 변수 instance가 비어있는가?
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour {
         playerAudio.Play();
 
         levelText.text = "Stage: " + currentLevel;  //현재 레벨 UI 출력
+
+        Camera = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
     }
 
     void Update() {
@@ -112,6 +116,7 @@ public class GameManager : MonoBehaviour {
             GameObject hudText = Instantiate(hudDamageText);
             hudText.transform.position = damageHudPos.position;
             hudText.GetComponent<DamageScript>().damage = damage;
+            Camera.VibrateForTime(0.3f);    //일정 시간 동안 화면 진동 효과
         }
 
         if (currentLevel >= lastChapter)
