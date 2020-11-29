@@ -26,6 +26,7 @@ public class CameraShake : MonoBehaviour
             transform.position = Random.insideUnitSphere;   //임의의 지점으로 카메라 좌표를 이동시켜 진동효과를 줌.
             shakeTime -= Time.deltaTime;    //시간이 흐르는 만큼 shakeTime 감소.
         }
+        //shakeTime == 0
         else
         {
             shakeTime = 0.0f;   //shakeTime 초기화
