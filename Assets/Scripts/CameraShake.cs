@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     private float shakeAmount = 1.0f;   //진동 세기
-    float shakeTime;    //화면 진동 지속 시간
+    private float shakeTime;    //화면 진동 지속 시간
     Vector3 initialPosition;    //진원지. Start 함수에서 위치 지정.
 
     public void VibrateForTime(float time)
