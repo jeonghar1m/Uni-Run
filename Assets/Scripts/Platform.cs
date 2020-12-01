@@ -33,7 +33,7 @@ public class Platform : MonoBehaviour {
         }
 
         //코인 수 만큼 루프
-        for(int i=0;i<coins.Length;i++)
+        for (int i = 0;i < coins.Length; i++)
         {
             if (Random.Range(0, 2) == 0)
                 coins[i].SetActive(true);
