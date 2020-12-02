@@ -58,11 +58,15 @@ public class Platform : MonoBehaviour {
             if (isTrap[i] && transform.position.x >= width && !GameManager.instance.isGameover && obstacles[i].transform.localPosition.y <= 1.8) //i번째 가시가 활성화되고 발판이 플레이어에게 다가왔으며, 게임 오버상태가 아니며, 가시의 local y좌표가 1.8 이하일 때
             {
                 obstacles[i].transform.Translate(Vector3.up * speed * Time.deltaTime);
-                if(isCoin[i + 1] && coins[i + 1].transform.localPosition.y <= 2.6)
+                if (isCoin[i + 1] && coins[i + 1].transform.localPosition.y <= 2.6)
                     coins[i + 1].transform.Translate(Vector3.up * speed * Time.deltaTime);
             }
             else if (isTrap[i] && transform.position.x < width && !GameManager.instance.isGameover && obstacles[i].transform.localPosition.y >= 0.8) //i번째 가시가 활성화되고 발판이 플레이어에게서 멀어졌으며, 게임 오버상태가 아니며, 가시의 local y좌표가 0.8 이상일 때
+            {
                 obstacles[i].transform.Translate(Vector3.down * speed * Time.deltaTime);
+                if (isCoin[i + 1] && coins[i + 1].transform.localPosition.y >= 1.6)
+                    coins[i + 1].transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
         }
     }
 
