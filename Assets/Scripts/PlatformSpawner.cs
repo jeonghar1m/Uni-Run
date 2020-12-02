@@ -4,7 +4,6 @@
 public class PlatformSpawner : MonoBehaviour
 {
     public GameObject platformPrefab; // 생성할 발판의 원본 프리팹
-    public GameObject blockPrefab; // 생성할 블록의 원본 프리팹
     private int count = 10; // 생성할 발판의 개수
 
     private float platformSpeed = 2.0f;
@@ -22,7 +21,7 @@ public class PlatformSpawner : MonoBehaviour
     private int currentIndex = 0; // 사용할 현재 순번의 발판
 
     private Vector2 platformsPoolPosition = new Vector2(0, -25); // 초반에 생성된 발판들을 화면 밖에 숨겨둘 위치
-    private Vector2 blocksPoolPosition = new Vector2(0, -30); // 초반에 생성된 블록들을 화면 밖에 숨겨둘 위치
+
     private float lastSpawnTime; // 마지막 배치 시점
 
 
@@ -39,7 +38,6 @@ public class PlatformSpawner : MonoBehaviour
             //platformPrefab을 원본으로 새 발판을 poolPosition 위치에 복제 생성
             //생성된 발판을 platforms, blocks 배열에 할당
             platforms[i] = Instantiate(platformPrefab, platformsPoolPosition, Quaternion.identity);
-            blocks[i] = Instantiate(blockPrefab, blocksPoolPosition, Quaternion.identity);
         }
         //마지막 배치 시점 초기화
         lastSpawnTime = 0f;
@@ -64,18 +62,14 @@ public class PlatformSpawner : MonoBehaviour
 
             //배치할 위치의 높이를 yMin과 yMax 사이에서 랜덤 설정
             float platformsYPos = Random.Range(yMin, yMax);
-            float blocksYPos = Random.Range(yMin, yMax);
 
             //사용할 현재 순번의 발판 게임 오브젝트를 비활성화하고 즉시 다시 활성화
             //이때 발판의 Platform 컴포넌트의 OnEnable 메서드 실행
             platforms[currentIndex].SetActive(false);
-            blocks[currentIndex].SetActive(false);
             platforms[currentIndex].SetActive(true);
-            blocks[currentIndex].SetActive(true);
 
             //현재 순번의 발판을 화면 왼쪽에 재배치
             platforms[currentIndex].transform.position = new Vector2(xPos, platformsYPos);
-            blocks[currentIndex].transform.position = new Vector2(xPos, blocksYPos);
 
             //순번 넘기기
             currentIndex++;
