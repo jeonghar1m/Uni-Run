@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // 발판으로서 필요한 동작을 담은 스크립트
-public class Platform : MonoBehaviour {
+public class Platform : MonoBehaviour
+{
     public GameObject[] obstacles; // 장애물 오브젝트들
     public GameObject[] coins;     //코인 오브젝트들
     public GameObject pill;
@@ -30,11 +31,14 @@ public class Platform : MonoBehaviour {
                 isTrap[i] = true;
             }
             else
+            {
                 obstacles[i].SetActive(false);
+                isTrap[i] = false;
+            }
         }
 
         //코인 수 만큼 루프
-        for (int i = 0;i < coins.Length; i++)
+        for (int i = 0; i < coins.Length; i++)
         {
             if (Random.Range(0, 2) == 0)
             {
@@ -42,7 +46,10 @@ public class Platform : MonoBehaviour {
                 isCoin[i] = true;
             }
             else
+            {
                 coins[i].SetActive(false);
+                isCoin[i] = false;
+            }
         }
 
         //알약 생성
@@ -70,9 +77,10 @@ public class Platform : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         // 플레이어 캐릭터가 자신을 밟았을때 점수를 추가하는 처리
-        if(collision.collider.tag=="Player"&&!stepped)
+        if (collision.collider.tag == "Player" && !stepped)
         {
             //점수를 추가하고 밟힘 상태를 참으로 변경
             stepped = true;
