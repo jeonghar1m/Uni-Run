@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 1480383573}
   - component: {fileID: 1480383572}
   m_Layer: 5
-  m_Name: PlayBotton
+  m_Name: QuitBotton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
